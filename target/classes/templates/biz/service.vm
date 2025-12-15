@@ -1,0 +1,10 @@
+package $package.service;
+
+import java.util.Map;
+
+public interface $entityService {
+#foreach($op in $operations)
+    Map<String,Object> $op.name(Map<String,Object> body);
+#end
+}
+

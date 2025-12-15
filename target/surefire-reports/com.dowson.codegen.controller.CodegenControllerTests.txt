@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.dowson.codegen.controller.CodegenControllerTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.114 s -- in com.dowson.codegen.controller.CodegenControllerTests

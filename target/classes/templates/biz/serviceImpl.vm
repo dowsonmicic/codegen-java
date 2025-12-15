@@ -1,0 +1,22 @@
+package $package.service.impl;
+
+import $package.service.$entityService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.Map;
+
+@Service
+@Slf4j
+public class $entityServiceImpl implements $entityService {
+#foreach($op in $operations)
+#if($op.transactional)
+    @Transactional
+#end
+    @Override
+    public Map<String,Object> $op.name(Map<String,Object> body) {
+        return java.util.Collections.emptyMap();
+    }
+#end
+}
+

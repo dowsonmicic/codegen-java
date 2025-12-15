@@ -1,0 +1,55 @@
+package ${parentPackage}.controller;
+
+import ${parentPackage}.service.${spec.resource}Service;
+import ${parentPackage}.vo.*;
+import ${parentPackage}.dto.*;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("$spec.basePath")
+@Validated
+@RequiredArgsConstructor
+@Tag(name = "$spec.tag", description = "$spec.description")
+@Slf4j
+public class ${spec.resource}Controller {
+    private final ${spec.resource}Service service;
+#foreach($op in $spec.operations)
+    @Operation(summary = "$op.summary")
+#if($op.method == "GET")
+    @GetMapping("$op.path")
+#elseif($op.method == "POST")
+    @PostMapping("$op.path")
+#elseif($op.method == "PUT")
+    @PutMapping("$op.path")
+#elseif($op.method == "DELETE")
+    @DeleteMapping("$op.path")
+#else
+    @PostMapping("$op.path")
+#end
+#set($reqType = $op.requestDto)
+#set($respType = $op.responseVo)
+#if($reqType && $respType)
+    public $respType ${op.name}($reqType req) {
+        return service.${op.name}(req);
+    }
+#elseif($reqType)
+    public void ${op.name}($reqType req) {
+        service.${op.name}(req);
+    }
+#elseif($respType)
+    public $respType ${op.name}() {
+        return service.${op.name}();
+    }
+#else
+    public void ${op.name}() {
+        service.${op.name}();
+    }
+#end
+
+#end
+}

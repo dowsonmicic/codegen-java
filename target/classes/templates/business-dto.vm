@@ -1,0 +1,7 @@
+package ${parentPackage}.dto;
+
+import lombok.Data;
+
+@Data
+public class $className {
+}

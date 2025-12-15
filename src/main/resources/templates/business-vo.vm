@@ -1,0 +1,7 @@
+package ${parentPackage}.vo;
+
+import lombok.Data;
+
+@Data
+public class $className {
+}

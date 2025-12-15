@@ -1,0 +1,51 @@
+package ${parentPackage}.service.impl;
+
+import ${parentPackage}.service.${spec.resource}Service;
+import ${parentPackage}.vo.*;
+import ${parentPackage}.dto.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+#if($spec.useMpService && $spec.entity && $spec.mapper)
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import ${parentPackage}.entity.${spec.entity};
+import ${parentPackage}.mapper.${spec.mapper};
+#end
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+#if($spec.useMpService && $spec.entity && $spec.mapper)
+public class ${spec.resource}ServiceImpl extends ServiceImpl<${spec.mapper}, ${spec.entity}> implements ${spec.resource}Service {
+#else
+public class ${spec.resource}ServiceImpl implements ${spec.resource}Service {
+#end
+#foreach($op in $spec.operations)
+#set($reqType = $op.requestDto)
+#set($respType = $op.responseVo)
+#if($op.transactional)
+    @Transactional
+#end
+#if($reqType && $respType)
+    @Override
+    public $respType ${op.name}($reqType req) {
+        return null;
+    }
+#elseif($reqType)
+    @Override
+    public void ${op.name}($reqType req) {
+    }
+#elseif($respType)
+    @Override
+    public $respType ${op.name}() {
+        return null;
+    }
+#else
+    @Override
+    public void ${op.name}() {
+    }
+#end
+
+#end
+}

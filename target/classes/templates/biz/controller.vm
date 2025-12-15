@@ -1,0 +1,29 @@
+package $package.controller;
+
+import $package.service.$entityService;
+import com.dowson.codegen.vo.Result;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
+import java.util.Map;
+
+@RestController
+@RequestMapping("$basePath")
+@Validated
+@RequiredArgsConstructor
+@Tag(name = "$entity", description = "$entity接口")
+@Slf4j
+public class $entityController {
+    private final $entityService $lowerEntityService;
+#foreach($op in $operations)
+    @Operation(summary = "$op.name")
+    @#if($op.method == "GET")GetMapping#elseif($op.method == "POST")PostMapping#elseif($op.method == "PUT")PutMapping#elseif($op.method == "DELETE")DeleteMapping#else@RequestMapping#end("$op.path")
+    public Result<Map<String,Object>> $op.name(@RequestBody Map<String,Object> body) {
+        return Result.success($lowerEntityService.$op.name(body));
+    }
+#end
+}
+

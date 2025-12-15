@@ -1,0 +1,339 @@
+[
+  {
+    "resource": "Author",
+    "basePath": "/bookshop/author",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Bookshop-Author",
+    "description": "作者管理",
+    "entity": "Author",
+    "mapper": "AuthorMapper",
+    "useMpService": true,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建作者",
+        "permission": "bookshop:author:create",
+        "transactional": true,
+        "requestDto": "AuthorCreateReq",
+        "responseVo": "AuthorRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新作者",
+        "permission": "bookshop:author:update",
+        "transactional": true,
+        "requestDto": "AuthorUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除作者",
+        "permission": "bookshop:author:delete",
+        "transactional": true,
+        "requestDto": "AuthorDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询作者详情",
+        "permission": "bookshop:author:query",
+        "responseVo": "AuthorRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询作者",
+        "permission": "bookshop:author:query",
+        "responseVo": "AuthorPageVO"
+      }
+    ]
+  },
+  {
+    "resource": "BookCategory",
+    "basePath": "/bookshop/category",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Bookshop-Category",
+    "description": "图书分类管理",
+    "entity": "BookCategory",
+    "mapper": "BookCategoryMapper",
+    "useMpService": true,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建分类",
+        "permission": "bookshop:category:create",
+        "transactional": true,
+        "requestDto": "BookCategoryCreateReq",
+        "responseVo": "BookCategoryRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新分类",
+        "permission": "bookshop:category:update",
+        "transactional": true,
+        "requestDto": "BookCategoryUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除分类",
+        "permission": "bookshop:category:delete",
+        "transactional": true,
+        "requestDto": "BookCategoryDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询分类详情",
+        "permission": "bookshop:category:query",
+        "responseVo": "BookCategoryRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询分类",
+        "permission": "bookshop:category:query",
+        "responseVo": "BookCategoryPageVO"
+      }
+    ]
+  },
+  {
+    "resource": "Book",
+    "basePath": "/bookshop/book",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Bookshop-Book",
+    "description": "图书管理",
+    "entity": "Book",
+    "mapper": "BookMapper",
+    "useMpService": true,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建图书",
+        "permission": "bookshop:book:create",
+        "transactional": true,
+        "requestDto": "BookCreateReq",
+        "responseVo": "BookRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新图书",
+        "permission": "bookshop:book:update",
+        "transactional": true,
+        "requestDto": "BookUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除图书",
+        "permission": "bookshop:book:delete",
+        "transactional": true,
+        "requestDto": "BookDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询图书详情",
+        "permission": "bookshop:book:query",
+        "responseVo": "BookRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询图书",
+        "permission": "bookshop:book:query",
+        "responseVo": "BookPageVO"
+      }
+    ]
+  },
+  {
+    "resource": "BookshopUser",
+    "basePath": "/bookshop/user",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Bookshop-User",
+    "description": "用户管理",
+    "entity": "BookshopUser",
+    "mapper": "BookshopUserMapper",
+    "useMpService": true,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建用户",
+        "permission": "bookshop:user:create",
+        "transactional": true,
+        "requestDto": "BookshopUserCreateReq",
+        "responseVo": "BookshopUserRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新用户",
+        "permission": "bookshop:user:update",
+        "transactional": true,
+        "requestDto": "BookshopUserUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除用户",
+        "permission": "bookshop:user:delete",
+        "transactional": true,
+        "requestDto": "BookshopUserDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询用户详情",
+        "permission": "bookshop:user:query",
+        "responseVo": "BookshopUserRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询用户",
+        "permission": "bookshop:user:query",
+        "responseVo": "BookshopUserPageVO"
+      }
+    ]
+  },
+  {
+    "resource": "OrderInfo",
+    "basePath": "/bookshop/order",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Bookshop-Order",
+    "description": "订单管理",
+    "entity": "OrderInfo",
+    "mapper": "OrderInfoMapper",
+    "useMpService": true,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建订单",
+        "permission": "bookshop:order:create",
+        "transactional": true,
+        "requestDto": "OrderInfoCreateReq",
+        "responseVo": "OrderInfoRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新订单",
+        "permission": "bookshop:order:update",
+        "transactional": true,
+        "requestDto": "OrderInfoUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除订单",
+        "permission": "bookshop:order:delete",
+        "transactional": true,
+        "requestDto": "OrderInfoDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询订单详情",
+        "permission": "bookshop:order:query",
+        "responseVo": "OrderInfoRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询订单",
+        "permission": "bookshop:order:query",
+        "responseVo": "OrderInfoPageVO"
+      }
+    ]
+  },
+  {
+    "resource": "OrderItem",
+    "basePath": "/bookshop/order-item",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Bookshop-OrderItem",
+    "description": "订单项管理",
+    "entity": "OrderItem",
+    "mapper": "OrderItemMapper",
+    "useMpService": true,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建订单项",
+        "permission": "bookshop:order-item:create",
+        "transactional": true,
+        "requestDto": "OrderItemCreateReq",
+        "responseVo": "OrderItemRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新订单项",
+        "permission": "bookshop:order-item:update",
+        "transactional": true,
+        "requestDto": "OrderItemUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除订单项",
+        "permission": "bookshop:order-item:delete",
+        "transactional": true,
+        "requestDto": "OrderItemDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询订单项详情",
+        "permission": "bookshop:order-item:query",
+        "responseVo": "OrderItemRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询订单项",
+        "permission": "bookshop:order-item:query",
+        "responseVo": "OrderItemPageVO"
+      }
+    ]
+  }
+]
+

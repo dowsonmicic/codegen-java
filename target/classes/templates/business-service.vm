@@ -1,0 +1,28 @@
+package ${parentPackage}.service;
+
+import ${parentPackage}.vo.*;
+import ${parentPackage}.dto.*;
+#if($spec.useMpService && $spec.entity)
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${parentPackage}.entity.${spec.entity};
+#end
+
+#if($spec.useMpService && $spec.entity)
+public interface ${spec.resource}Service extends IService<${spec.entity}> {
+#else
+public interface ${spec.resource}Service {
+#end
+#foreach($op in $spec.operations)
+#set($reqType = $op.requestDto)
+#set($respType = $op.responseVo)
+#if($reqType && $respType)
+    $respType ${op.name}($reqType req);
+#elseif($reqType)
+    void ${op.name}($reqType req);
+#elseif($respType)
+    $respType ${op.name}();
+#else
+    void ${op.name}();
+#end
+#end
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "resource": "Config",
+    "basePath": "/infra/config",
+    "packageName": "com.dowson.testdemo",
+    "tag": "Infra",
+    "description": "参数配置管理",
+    "entity": null,
+    "mapper": null,
+    "useMpService": false,
+    "operations": [
+      {
+        "name": "create",
+        "method": "POST",
+        "path": "/create",
+        "summary": "创建配置",
+        "permission": "infra:config:create",
+        "transactional": true,
+        "requestDto": "ConfigCreateReq",
+        "responseVo": "ConfigRespVO"
+      },
+      {
+        "name": "update",
+        "method": "PUT",
+        "path": "/update",
+        "summary": "更新配置",
+        "permission": "infra:config:update",
+        "transactional": true,
+        "requestDto": "ConfigUpdateReq"
+      },
+      {
+        "name": "delete",
+        "method": "DELETE",
+        "path": "/delete",
+        "summary": "删除配置",
+        "permission": "infra:config:delete",
+        "transactional": true,
+        "requestDto": "ConfigDeleteReq"
+      },
+      {
+        "name": "get",
+        "method": "GET",
+        "path": "/get",
+        "summary": "查询配置",
+        "permission": "infra:config:query",
+        "responseVo": "ConfigRespVO"
+      },
+      {
+        "name": "page",
+        "method": "GET",
+        "path": "/page",
+        "summary": "分页查询配置",
+        "permission": "infra:config:query",
+        "responseVo": "ConfigPageVO"
+      }
+    ]
+  }
+]
