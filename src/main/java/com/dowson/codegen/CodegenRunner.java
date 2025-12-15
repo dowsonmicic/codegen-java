@@ -25,6 +25,8 @@ public class CodegenRunner implements CommandLineRunner {
     private String username;
     @Value("${spring.datasource.password}")
     private String password;
+    @Value("${codegen.fileOverride:false}")
+    private boolean fileOverride;
 
     @Override
     /**
@@ -43,7 +45,7 @@ public class CodegenRunner implements CommandLineRunner {
         String outputPath = (outputRoot == null || outputRoot.isBlank())
                 ? System.getProperty("user.dir") + "/" + module
                 : java.nio.file.Paths.get(outputRoot, module).toString();
-        CodeGenerator.generate(outputPath, parentPackage, tables, url, username, password);
+        CodeGenerator.generate(outputPath, parentPackage, tables, url, username, password, fileOverride);
     }
 
     private boolean isBlank(String s) {

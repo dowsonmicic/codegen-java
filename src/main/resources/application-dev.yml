@@ -11,4 +11,5 @@ codegen:
   module: test-demo
   package: com.dowson.testdemo
   tables: author,book,book_category
-
+  specFile: src/main/resources/specs/sample-infra.json
+  fileOverride: true

@@ -13,6 +13,8 @@
 
 ## 架构图
 
+
+
 ```mermaid
 flowchart LR
     UI[🧪 Knife4j / Swagger UI] --> CTRL[🎯 CodegenController]
@@ -97,6 +99,7 @@ codegen:
   module: test-demo
   package: com.dowson.testdemo
   tables: author,book,book_category
+  specFile: src/main/resources/specs/bookshop-demo.json
 
 server:
   port: 8090
@@ -124,8 +127,61 @@ server:
 
 ---
 
+## 业务规范（BusinessSpec）与示例
+
+codegen-java 支持在生成 MyBatis-Plus 标准代码的基础上，按业务规范额外生成：
+
+- 自定义 Controller（业务接口）
+- Service / ServiceImpl（带事务注解）
+- DTO / VO（请求与返回对象）
+
+规范格式见 `codegen_run_执行代码生成.json` 中 `BusinessSpec` 与 `OperationSpec`。
+
+### 示例规范：书店业务（基于 test.sql）
+
+- 路径：`codegen-java/src/main/resources/specs/bookshop-demo.json`
+- 覆盖的表（来自 `src/main/resources/sql/test.sql`）：
+  - `author` / `book` / `book_category`
+  - `bookshop_user` / `order_info` / `order_item`
+- 约定：
+  - `packageName` 固定为 `com.dowson.testdemo`
+  - `entity` 与 `mapper` 对应 `test-demo` 模块下已有实体与 Mapper
+  - `useMpService=true`，业务 Service 继承 `IService<Entity>`，实现类继承 `ServiceImpl<Mapper, Entity>`
+
+使用方式：
+
+1. 在 `application-dev.yml` 中设置：
+
+   ```yaml
+   codegen:
+     outputRoot: d:/Java_learn/java_learn/demo
+     module: test-demo
+     package: com.dowson.testdemo
+     tables: author,book,book_category
+     specFile: src/main/resources/specs/bookshop-demo.json
+     fileOverride: true
+   ```
+
+2. 确保本地 MySQL 已执行 `src/main/resources/sql/test.sql`，存在 `test` 库和 6 张表。
+
+3. 启动 `codegen-java`（或通过 Maven 运行）后调用 `/codegen/run`：
+
+   ```json
+   {
+     "dryRun": false
+   }
+   ```
+
+4. 生成结果：
+   - 标准 MyBatis-Plus 代码输出到：`d:/Java_learn/java_learn/demo/test-demo/src/main/java/com/dowson/testdemo`
+   - 业务层代码按 `bookshop-demo.json` 生成 Controller / Service / DTO / VO 等骨架，位于：
+     - `controller`：如 `AuthorController`、`BookController`、`OrderInfoController` 等
+     - `service` / `service.impl`
+     - `dto` / `vo`
+
+---
+
 ## 版权与致谢
 
 - 依赖：Spring Boot、MyBatis-Plus、Velocity、SpringDoc、Knife4j
 - 许可：MIT
-

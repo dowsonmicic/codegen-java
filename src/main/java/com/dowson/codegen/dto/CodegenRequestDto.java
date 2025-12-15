@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.dowson.codegen.spec.BusinessSpec;
+import java.util.List;
 
 @Data
 @Builder
@@ -25,4 +27,6 @@ public class CodegenRequestDto {
     private String url;
     private String username;
     private String password;
+    private String specFile;
+    private List<BusinessSpec> specs;
 }
